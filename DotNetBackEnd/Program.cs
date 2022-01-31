@@ -1,7 +1,20 @@
 DotNetEnv.Env.Load();
 DotNetEnv.Env.TraversePath().Load();
 
+var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      builder =>
+                      {
+                          builder.WithOrigins(DotNetEnv.Env.GetString("STRICT_ORIGIN"));
+                      });
+});
 
 // Add services to the container.
 
@@ -20,6 +33,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 

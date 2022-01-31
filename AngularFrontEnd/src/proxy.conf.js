@@ -4,7 +4,8 @@ const PROXY_CONFIG = [
       "/weatherforecast",
     ],
     target: process.env.NG_APP_PROXY_TARGET,
-    secure: false
+    secure: false,
+    changeOrigin: true
   }
 ]
 

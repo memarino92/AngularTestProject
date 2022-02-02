@@ -101,6 +101,19 @@
             ],
             "scripts": []
           }
+        },
+        "storybook": {
+          "builder": "@ngx-env/builder:dev-server",
+          "options": {
+            "browserTarget": "AngularTestProject:build",
+            "port": 4400
+          }
+        },
+        "build-storybook": {
+          "builder": "@ngx-env/builder:dev-server",
+          "options": {
+            "browserTarget": "AngularTestProject:build"
+          }
         }
       }
     }
